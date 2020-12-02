@@ -95,14 +95,7 @@ fn main() {
     count = 0;
     for &(idx_one, idx_two, char, password) in &parsed_data {
         let password = password.as_bytes();
-        let mut matches = 0;
-        if password[idx_one - 1] == char as u8 {
-            matches += 1;
-        }
-        if password[idx_two - 1] == char as u8 {
-            matches += 1;
-        }
-        if matches == 1 {
+        if (password[idx_one - 1] == char as u8) ^ (password[idx_two - 1] == char as u8) {
             count += 1;
         }
     }
